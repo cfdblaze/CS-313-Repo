@@ -10,6 +10,10 @@ $file = fopen("fnafvotes.txt", "r");
 if($file) {
 $votestring = fgets($file);
 echo $votestring;
+}
+else {
+echo "dang";
+}
 ?>
 </body>
 </html>
