@@ -42,7 +42,7 @@ if ($votesarray[14] > $votesarray[13])
 $fright = "Phantom Chica";
 if ($votesarray[15] > $votesarray[14])
 $fright = "Phantom Foxy";
-echo $original . " " . $withered . " " . $toy . " " . $fright;
+echo $original . "\n" . $withered . "\n" . $toy . "\n" . $fright;
 } else {
 echo "nope";
 }
