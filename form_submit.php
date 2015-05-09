@@ -10,12 +10,12 @@ if($file) {
 $votestring = fgets($file);
 echo $votestring;
 $votesarray = explode(" ", $votestring);
-$votesarry[$_POST["Original"]]++;
-$votesarry[$_POST["Withered"]]++;
-$votesarry[$_POST["Toys"]]++;
-$votesarry[$_POST["Fright"]]++;
+$votesarray[$_POST["Original"]]++;
+$votesarray[$_POST["Withered"]]++;
+$votesarray[$_POST["Toys"]]++;
+$votesarray[$_POST["Fright"]]++;
 for ($i = 0; $i <= 15; $i++) {
-echo $votesarry[$i] . " ";
+echo $votesarray[$i] . " ";
 }
 } else {
 echo "nope";
