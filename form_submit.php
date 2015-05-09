@@ -8,8 +8,7 @@ You chose <?php echo $_POST["Original"]; ?>, <?php echo $_POST["Withered"]; ?>, 
 <? php
 $file = fopen("fnafvotes.txt", "r");
 if($file) {
-$votestring = fgets($file);
-echo $votestring;
+echo "yay";
 }
 else {
 echo "dang";
