@@ -3,6 +3,7 @@
 body
 {
 background-image:url("http://cloud-4.steamusercontent.com/ugc/531761112933067572/151A5182D816D1E57927878B3103F9FBC3966F73/");
+color:white;
 }
 </style>
 <body>
@@ -48,7 +49,7 @@ if ($votesarray[14] > $votesarray[13])
 $fright = "Phantom Chica";
 if ($votesarray[15] > $votesarray[14])
 $fright = "Phantom Foxy";
-echo $original . " " . $withered . " " . $toy . " " . $fright;
+echo $original . "\r\n" . $withered . "\r\n" . $toy . "\r\n" . $fright;
 } else {
 echo "nope";
 }
