@@ -19,7 +19,6 @@ $votesarray[$_POST["Withered"]]++;
 $votesarray[$_POST["Toys"]]++;
 $votesarray[$_POST["Fright"]]++;
 $votestring = implode(" ", $votesarray);
-echo $votestring;
 file_put_contents("fnafvotes.txt", $votestring);
 $original = "Freddy";
 $withered = "Withered Freddy";
@@ -49,13 +48,13 @@ if ($votesarray[14] > $votesarray[13])
 $fright = "Phantom Chica";
 if ($votesarray[15] > $votesarray[14])
 $fright = "Phantom Foxy";
-echo $original;
-echo "\n";
-echo $withered;
-echo "\n";
-echo $toy;
-echo "\n";
-echo $fright;
+echo $original; ?>
+<br>
+<?php echo $withered; ?>
+<br>
+<?php echo $toy; ?>
+<br>
+<?php echo $fright; ?>
 } else {
 echo "nope";
 }
