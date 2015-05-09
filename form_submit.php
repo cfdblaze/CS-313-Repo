@@ -1,4 +1,10 @@
 <html>
+<style>
+body
+{
+background-image:url("http://cloud-4.steamusercontent.com/ugc/531761112933067572/151A5182D816D1E57927878B3103F9FBC3966F73/");
+}
+</style>
 <body>
 Thanks for voting!
 <br>
