@@ -8,6 +8,7 @@ You chose <?php echo $_POST["Original"]; ?>, <?php echo $_POST["Withered"]; ?>, 
 $file = fopen("fnafvotes.txt", "r"); 
 if($file) {
 $votestring = fgets($file);
+echo $votestring;
 $votesarray = explode(" ", $votestring);
 $votesarry[$_POST["Original"]]++;
 $votesarry[$_POST["Withered"]]++;
