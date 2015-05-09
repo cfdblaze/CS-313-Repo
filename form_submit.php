@@ -2,8 +2,6 @@
 <body>
 Thanks for voting!
 <br>
-You chose <?php echo $_POST["Original"]; ?>, <?php echo $_POST["Withered"]; ?>, <?php echo $_POST["Toys"]; ?>, and <?php echo $_POST["Fright"]; ?>
-<br>
 <?php
 $file = fopen("fnafvotes.txt", "r+"); 
 if($file) {
@@ -16,6 +14,35 @@ $votesarray[$_POST["Fright"]]++;
 $votestring = implode(" ", $votesarray);
 echo $votestring;
 file_put_contents("fnafvotes.txt", $votestring);
+$original = "Freddy";
+$withered = "Withered Freddy";
+$toy = "Toy Freddy";
+$fright = "Phantom Freddy";
+if ($votesarray[1] > $votesarray[0])
+$original = "Bonnie";
+if ($votesarray[2] > $votesarray[1])
+$original = "Chica";
+if ($votesarray[3] > $votesarray[2])
+$original = "Foxy";
+if ($votesarray[5] > $votesarray[4])
+$withered = "Withered Bonnie";
+if ($votesarray[6] > $votesarray[5])
+$withered = "Withered Chica";
+if ($votesarray[7] > $votesarray[6])
+$withered = "Withered Foxy";
+if ($votesarray[9] > $votesarray[8])
+$toy = "Toy Bonnie";
+if ($votesarray[10] > $votesarray[9])
+$toy = "Toy Chica";
+if ($votesarray[11] > $votesarray[10])
+$toy = "Mangle";
+if ($votesarray[13] > $votesarray[12])
+$fright = "Springtrap";
+if ($votesarray[14] > $votesarray[13])
+$fright = "Phantom Chica";
+if ($votesarray[15] > $votesarray[14])
+$fright = "Phantom Foxy";
+echo $original . " " . $withered . " " . $toy . " " . $fright;
 } else {
 echo "nope";
 }
