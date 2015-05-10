@@ -47,7 +47,10 @@ if ($votesarray[13] < $votesarray[14])
 $fright = "Phantom Chica";
 if ($votesarray[14] < $votesarray[15])
 $fright = "Phantom Foxy";
-echo $original;
+echo "Most popular original animatronic: $original <br>";
+echo "Most popular withered animatronic: $withered <br>";
+echo "Most popular toy animatronic: $toy <br>";
+echo "Most popular ghost animatronic: $fright <br>";
 } else {
 echo "nope";
 }
