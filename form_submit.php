@@ -23,7 +23,7 @@ $votestring = implode(" ", $votesarray);
 file_put_contents("fnafvotes.txt", $votestring);
 setcookie("taken", TRUE, time() + (24*24), "/");
 } else {
-echo "You already took this!";
+echo "You already took this survey! <br>";
 }
 $original = "Freddy";
 $withered = "Withered Freddy";
