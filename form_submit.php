@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
 <body>
 <style>
@@ -8,10 +11,12 @@ color: white;
 </style>
 <br>
 <?php
+
 $file = fopen("fnafvotes.txt", "r+"); 
 if($file) {
 $votestring = fgets($file);
 $votesarray = explode(" ", $votestring);
+
 $votesarray[$_POST["Original"]]++;
 $votesarray[$_POST["Withered"]]++;
 $votesarray[$_POST["Toys"]]++;
