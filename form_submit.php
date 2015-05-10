@@ -10,14 +10,19 @@ color:white;
 Thanks for voting!
 <br>
 <?php
+session_start();
 $file = fopen("fnafvotes.txt", "r+"); 
 if($file) {
 $votestring = fgets($file);
 $votesarray = explode(" ", $votestring);
+if ($_SESSION[herebefore] != "yes") {
 $votesarray[$_POST["Original"]]++;
 $votesarray[$_POST["Withered"]]++;
 $votesarray[$_POST["Toys"]]++;
 $votesarray[$_POST["Fright"]]++;
+} else {
+$_SESSION[herebefore] = yes;
+}
 $votestring = implode(" ", $votesarray);
 file_put_contents("fnafvotes.txt", $votestring);
 $original = "Freddy";
