@@ -14,6 +14,11 @@
     </style>
 </head>
 <body>
+    <script>
+        if ($.cookie('taken') != null) {
+            window.location.replace('form_submit.php');
+        }
+    </script>
     <div style="color:white; font-size:xx-large; text-align:center;">FNAF Favorite Survey</div>
     <br />
     <div style="text-align:center; color:white;">
