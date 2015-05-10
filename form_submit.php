@@ -15,6 +15,7 @@ if($file) {
 $votestring = fgets($file);
 $votesarray = explode(" ", $votestring);
 if(!isset($_COOKIE["taken"])) {
+echo "Thanks for taking the survey!";
 $votesarray[$_POST["Original"]]++;
 $votesarray[$_POST["Withered"]]++;
 $votesarray[$_POST["Toys"]]++;
