@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
 <style>
 body
@@ -10,7 +13,6 @@ color:white;
 Thanks for voting!
 <br>
 <?php
-session_start();
 $file = fopen("fnafvotes.txt", "r+"); 
 if($file) {
 $votestring = fgets($file);
@@ -20,11 +22,11 @@ $votesarray[$_POST["Original"]]++;
 $votesarray[$_POST["Withered"]]++;
 $votesarray[$_POST["Toys"]]++;
 $votesarray[$_POST["Fright"]]++;
+$votestring = implode(" ", $votesarray);
+file_put_contents("fnafvotes.txt", $votestring);
 } else {
 $_SESSION[herebefore] = "yes";
 }
-$votestring = implode(" ", $votesarray);
-file_put_contents("fnafvotes.txt", $votestring);
 $original = "Freddy";
 $withered = "Withered Freddy";
 $toy = "Toy Freddy";
@@ -53,7 +55,7 @@ if ($votesarray[14] > $votesarray[13])
 $fright = "Phantom Chica";
 if ($votesarray[15] > $votesarray[14])
 $fright = "Phantom Foxy";
-echo "Most popular original: $original \r";
+echo "Most popular original: $original <br>";
 echo "Most popular withered: $withered \r";
 echo "Most popular toy: $toy \r";
 echo "Most popular ghost: $fright";
