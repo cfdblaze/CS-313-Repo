@@ -17,7 +17,7 @@ $file = fopen("fnafvotes.txt", "r+");
 if($file) {
 $votestring = fgets($file);
 $votesarray = explode(" ", $votestring);
-if ($_SESSION[herebefore] != "yes") {
+if (!isset($_SESSION['first']) {
 $votesarray[$_POST["Original"]]++;
 $votesarray[$_POST["Withered"]]++;
 $votesarray[$_POST["Toys"]]++;
@@ -26,7 +26,7 @@ $votestring = implode(" ", $votesarray);
 echo "$votestring <br>";
 file_put_contents("fnafvotes.txt", $votestring);
 } else {
-$_SESSION[herebefore] = "yes";
+$_SESSION['first'] = "nope";
 }
 $original = "Freddy";
 $withered = "Withered Freddy";
