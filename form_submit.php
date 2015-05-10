@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <html>
 <style>
 body
@@ -13,6 +10,7 @@ color:white;
 Thanks for voting!
 <br>
 <?php
+session_start();
 $file = fopen("fnafvotes.txt", "r+"); 
 if($file) {
 $votestring = fgets($file);
