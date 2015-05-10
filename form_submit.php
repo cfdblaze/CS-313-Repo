@@ -23,6 +23,7 @@ $votesarray[$_POST["Withered"]]++;
 $votesarray[$_POST["Toys"]]++;
 $votesarray[$_POST["Fright"]]++;
 $votestring = implode(" ", $votesarray);
+echo "$votestring <br>";
 file_put_contents("fnafvotes.txt", $votestring);
 } else {
 $_SESSION[herebefore] = "yes";
@@ -56,8 +57,8 @@ $fright = "Phantom Chica";
 if ($votesarray[15] > $votesarray[14])
 $fright = "Phantom Foxy";
 echo "Most popular original: $original <br>";
-echo "Most popular withered: $withered \r";
-echo "Most popular toy: $toy \r";
+echo "Most popular withered: $withered <br>";
+echo "Most popular toy: $toy <br>";
 echo "Most popular ghost: $fright";
 } else {
 echo "nope";
