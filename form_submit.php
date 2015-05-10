@@ -24,7 +24,7 @@ $votesarray[$_POST["Fright"]]++;
 $votestring = implode(" ", $votesarray);
 file_put_contents("fnafvotes.txt", $votestring);
 } else {
-$_SESSION["first"]
+$_SESSION["first"] = true;
 }
 
 $original = "Freddy";
