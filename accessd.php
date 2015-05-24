@@ -35,7 +35,7 @@ try
  foreach ($db->query($query) as $row)
  {
   $charid = $row['ch.id'];
-  echo '$row[ch.name]';
+  echo $row['ch.name'];
  }
 } catch (PDOEXCEPTION $ex)
 {
