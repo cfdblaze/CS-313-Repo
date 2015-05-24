@@ -25,15 +25,13 @@ if ($dbHost === null || $dbHost == "") {
 
 $searchterms = $_POST["searchtext"];
 
-echo 'woooork';
-
 try
 {
 
  $db = new PDO("mysql:host=$dbHost;dbname=dnd_character_manager", $dbUser, $dbPassword);
  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  
- $query = "SELECT * FROM characters WHERE name LIKE '%$searchterms%'";
+ $query = "SELECT * FROM characters WHERE name LIKE '%$searchterms%' LIMIT 1";
  foreach ($db->query($query) as $row)
  {
   echo $row['name'];
