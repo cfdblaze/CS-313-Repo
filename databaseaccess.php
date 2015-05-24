@@ -14,8 +14,7 @@ session_start();
 <?php
 
 echo '<form action="accessd.php" method="post">
-        Includes: <input type="text" name="searchtext"/> <br/> Character <input type="radio" name="searchwhat" value="characters"/> 
-		Spell <input type="radio" name="searchwhat" value="spells"/><br/>
+        Character Search: <input type="text" name="searchtext"/> <br/>
 		<input type="submit" value="Search!">
     </form> <br/>';
 

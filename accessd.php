@@ -24,7 +24,6 @@ if ($dbHost === null || $dbHost == "") {
 }
 
 $searchterms = $_POST["searchtext"];
-$searchtable = $_POST["searchwhat"];
 
 try
 {
@@ -32,17 +31,14 @@ try
  $db = new PDO("mysql:host=$dbHost;dbname=dnd_character_manager", $dbUser, $dbPassword);
  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  
- $query = "SELECT * FROM $searchtable WHERE name LIKE '%$searchterms%'";
- if ($searchtable == 'characters') {
-  foreach ($db->query($query) as $row)
-  {
-   echo $row['name'] . ' Level: ' . $row['level'] . '  ' . ' HP: ' . $row['HP'] . '<br />';
-  }
- } else {
-  foreach ($db->query($query) as $row)
-  {
-   echo $row['name'] . '  ' . $row['school'] . ' Level: ' . $row['spell_level'] . ' Saving Throw: ' . $row['saving_throw'] . '<br />';
-  }
+ $query = "SELECT ch.id, ch.name, cl.name, cc.class_level, ch.HP, ch.AC, ch.Strength, ch.Dexterity, ch.Constitution, ch.Intelligence, ch.Wisdom, ch.Charisma, ch.BAB, ch.fort_save, ch.reflex_save, ch.will_save, ch.skill_ranks FROM characters ch JOIN character_classes cc ON ch.id = cc.character_id JOIN classes cl ON cc.class_id = cl.id WHERE name LIKE '%searchterms%' LIMIT 1;";
+ foreach ($db->query($query) as $row)
+ {
+  $charid = $row['ch.id'];
+  echo '<table>
+  <tr><td>$row['ch.name']</td><td>$row[cl.name] . $row[cc.class_level]</td></tr>
+  <tr><td>BAB: $row['ch.BAB']</td><td>STR: $row['ch.Strength']</td></tr>
+  </table>'
  }
 } catch (PDOEXCEPTION $ex)
 {
