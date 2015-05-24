@@ -29,7 +29,7 @@ $searchtable = $_POST["searchwhat"];
 try
 {
 
- $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPassword);
+ $db = new PDO("mysql:host=$dbHost;dbname=dnd_character_manager", $dbUser, $dbPassword);
  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  
  $query = "SELECT * FROM $searchtable WHERE name LIKE '%$searchterms%'";
