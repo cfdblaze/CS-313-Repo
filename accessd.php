@@ -34,7 +34,10 @@ try
  $query = "SELECT * FROM characters WHERE name LIKE '%$searchterms%' LIMIT 1";
  foreach ($db->query($query) as $row)
  {
-  echo $row['name'];
+  echo $row['name'] . ' Level: ' . $row['level'] . ' HP: ' . $row['HP'] . ' AC: ' . $row['AC'] . '<br/>';
+  echo 'STR ' . $row['Strength'] . ' DEX ' . $row['Dexterity'] . ' CON ' . $row['Constitution'] . ' INT ' . $row['Intelligence'] . ' WIS ' . $row['WISDOM'] . ' CHA ' . $row['Charisma'] . '<br/>';
+  echo 'BAB ' . $row['BAB'] . ' FORT: ' . $row['fort_save'] . ' REF: ' . $row['reflex_save'] . ' WILL: ' . $row['will_save'] . '<br/>';
+  echo 'Skills: ' . $row['skill_ranks'];
  }
 } catch (PDOEXCEPTION $ex)
 {
