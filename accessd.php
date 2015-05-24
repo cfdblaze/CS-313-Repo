@@ -34,7 +34,7 @@ try
  $query = "SELECT * FROM characters ch JOIN character_classes cc ON ch.id = cc.character_id JOIN classes cl ON cc.class_id = cl.id WHERE ch.name LIKE '%$searchterms%' LIMIT 1";
  foreach ($db->query($query) as $row)
  {
-  echo $row['name'];
+  echo $row['ch.name'];
  }
 } catch (PDOEXCEPTION $ex)
 {
