@@ -25,13 +25,15 @@ if ($dbHost === null || $dbHost == "") {
 
 $searchterms = $_POST["searchtext"];
 
+echo 'woooork';
+
 try
 {
 
  $db = new PDO("mysql:host=$dbHost;dbname=dnd_character_manager", $dbUser, $dbPassword);
  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  
- $query = "SELECT ch.id, ch.name, cl.name, cc.class_level, ch.HP, ch.AC, ch.Strength, ch.Dexterity, ch.Constitution, ch.Intelligence, ch.Wisdom, ch.Charisma, ch.BAB, ch.fort_save, ch.reflex_save, ch.will_save, ch.skill_ranks FROM characters ch JOIN character_classes cc ON ch.id = cc.character_id JOIN classes cl ON cc.class_id = cl.id WHERE ch.name LIKE '%$searchterms%'";
+ $query = "SELECT ch.id, ch.name, cl.name, cc.class_level, ch.HP, ch.AC, ch.Strength, ch.Dexterity, ch.Constitution, ch.Intelligence, ch.Wisdom, ch.Charisma, ch.BAB, ch.fort_save, ch.reflex_save, ch.will_save, ch.skill_ranks FROM characters ch JOIN character_classes cc ON ch.id = cc.character_id JOIN classes cl ON cc.class_id = cl.id WHERE ch.name LIKE '%$searchterms%';";
  foreach ($db->query($query) as $row)
  {
   echo $row['ch.name'];
