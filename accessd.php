@@ -31,7 +31,7 @@ try
  $db = new PDO("mysql:host=$dbHost;dbname=dnd_character_manager", $dbUser, $dbPassword);
  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  
- $query = "SELECT * FROM characters WHERE name LIKE '%$searchterms%' LIMIT 1";
+ $query = "SELECT * FROM characters JOIN character_classes cc ON ch.id = cc.character_id JOIN classes cl ON cc.class_id = cl.id WHERE name LIKE '%$searchterms%' LIMIT 1";
  foreach ($db->query($query) as $row)
  {
   echo $row['name'];
