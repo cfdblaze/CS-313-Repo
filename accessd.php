@@ -35,10 +35,7 @@ try
  foreach ($db->query($query) as $row)
  {
   $charid = $row['ch.id'];
-  echo '<table>
-  <tr><td>$row['ch.name']</td><td>$row[cl.name] . $row[cc.class_level]</td></tr>
-  <tr><td>BAB: $row['ch.BAB']</td><td>STR: $row['ch.Strength']</td></tr>
-  </table>';
+  echo '$row[ch.name]';
  }
 } catch (PDOEXCEPTION $ex)
 {
