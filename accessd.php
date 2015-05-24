@@ -33,10 +33,10 @@ try
  $db = new PDO("mysql:host=$dbHost;dbname=dnd_character_manager", $dbUser, $dbPassword);
  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  
- $query = "SELECT * FROM characters ch JOIN character_classes cc ON ch.id = cc.character_id JOIN classes cl ON cc.class_id = cl.id WHERE ch.name LIKE '%$searchterms%';";
+ $query = "SELECT * FROM $searchtable WHERE name LIKE '%$searchterms%'";
  foreach ($db->query($query) as $row)
  {
-  echo $row['ch.name'];
+  echo $row['name'];
  }
 } catch (PDOEXCEPTION $ex)
 {
