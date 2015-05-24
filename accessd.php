@@ -12,7 +12,7 @@ session_start();
 
 $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
 
-if ($openShiftVar === null || $openShiftVar == "") {
+if ($dbHost === null || $dbHost == "") {
  $dbUser = 'dnduser';
  $dbPass = 'rollinitiative';
  $dbHost = 'localhost';
