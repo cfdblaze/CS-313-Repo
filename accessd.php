@@ -4,7 +4,7 @@ session_start();
 
 <html>
 <head>
-<title> Results </title>
+<title> Character_Select </title>
 </head>
 <body>
 
@@ -14,8 +14,8 @@ $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
 
 if ($dbHost === null || $dbHost == "") {
  $dbUser = 'dnduser';
- $dbPass = 'rollinitiative';
- $dbHost = 'localhost';
+ $dbPassword = 'rollinitiative';
+ $dbHost = '127.0.0.1';
  $dbName = 'dnd_character_manager';
 } else {
  $dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
@@ -24,26 +24,25 @@ if ($dbHost === null || $dbHost == "") {
 }
 
 $searchterms = $_POST["searchtext"];
-
 try
 {
 
  $db = new PDO("mysql:host=$dbHost;dbname=dnd_character_manager", $dbUser, $dbPassword);
  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  
- $query = "SELECT * FROM characters WHERE name LIKE '%$searchterms%' LIMIT 1";
+ $query = "SELECT id, name, level, race FROM characters WHERE name LIKE '%$searchterms%';";
  foreach ($db->query($query) as $row)
  {
-  echo $row['name'] . ' Level: ' . $row['level'] . ' HP: ' . $row['HP'] . ' AC: ' . $row['AC'] . '<br/>';
-  echo 'STR ' . $row['Strength'] . ' DEX ' . $row['Dexterity'] . ' CON ' . $row['Constitution'] . ' INT ' . $row['Intelligence'] . ' WIS ' . $row['WISDOM'] . ' CHA ' . $row['Charisma'] . '<br/>';
-  echo 'BAB ' . $row['BAB'] . ' FORT: ' . $row['fort_save'] . ' REF: ' . $row['reflex_save'] . ' WILL: ' . $row['will_save'] . '<br/>';
-  echo 'Skills: ' . $row['skill_ranks'];
+  echo $row['id'] . ' - ' . $row['name'] . ': Level ' . $row['level'] . ', ' . $row['race'];
+  echo '<br/>';
  }
 } catch (PDOEXCEPTION $ex)
 {
  echo "bad thing was " . $ex;
 }
 
+echo '<br/><br/><br/>';
+echo '<form action="char_sheet.php" method="POST">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: <input type="text" name="idsend" /><br />Password: <input type="text" name="passcode" /><br/><input type="submit" value="Select Character" /></form>';
 ?>
 </body>
 </html>

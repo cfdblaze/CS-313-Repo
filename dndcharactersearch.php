@@ -5,7 +5,7 @@ session_start();
 
 <html>
 <head>
-<title>D&D Character Search
+<title>PHP Database Access
 </title>
 </head>
 <body>
