@@ -16,7 +16,8 @@ session_start();
 echo '<form action="accessd.php" method="post">
         Character Search: <input type="text" name="searchtext"/> <br/>
 		<input type="submit" value="Search!">
-    </form> <br/>';
+    </form> <br/>
+	<a href="character_create.html">Or create a new character</a>';
 
 ?>
 

@@ -45,7 +45,7 @@ try
  if ($pw != $code_of_passing) {
   echo 'Invalid Password!';
  } else {
-  $query = "SELECT id, name, level, race, size, speed, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, BAB, fort_save, reflex_save, will_save FROM characters WHERE id = '$char_id';";
+  $query = "SELECT id, name, level, HP, AC, flat_footed_AC, touch_AC, race, size, speed, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, BAB, fort_save, reflex_save, will_save FROM characters WHERE id = '$char_id';";
   foreach ($db->query($query) as $row)
   {
    echo '<table><tr><td width="200">' . $row['name'] . '</td>';
@@ -66,7 +66,52 @@ try
    echo '<td width="200"> Reflex save: ' . $row['reflex_save'] . '&nbsp;&nbsp;&nbsp;Will save: ' . $row['will_save'] . '</td>';
    echo '<td width="70"> CON: ' . $row['Constitution'] . '</td>';
    echo '<td width="70"> CHA: ' . $row['Charisma'] . '</td></tr></table>';
+
+   echo '<table><tr><td width="200"> HP: <input type="text" size="5"> / ' . $row['HP'] . '</td>';
+   echo '<td> AC: ' . $row['AC'] . ' Flat-footed: ' . $row['flat_footed_AC'] . ' Touch: ' . $row['touch_AC'] . '</td></tr>';
   }
+  $query = "SELECT * FROM equipment_owned WHERE character_id = $char_id AND type = 'Weapon';";
+  foreach ($db->query($query) as $row)
+  {
+   echo '<tr><td width="150">' . $row['name'] . '</td><td>' . $row['description'] . '</td></tr>';
+  }
+  echo '</table>';
+  $query = "SELECT skill_ranks, qualities, 0_spells, 1_spells, 2_spells, 3_spells, 4_spells, 5_spells, 6_spells, 7_spells, 8_spells, 9_spells FROM characters WHERE id = $char_id;";
+  foreach ($db->query($query) as $row)
+  {
+   echo '<br/>Skills: <br/> ' . $row['skill_ranks'] . '<br/>';
+   echo '<br/>Qualities: <br/> '. $row['qualities'] . '<br/>';
+   echo '<br/>Spells Per Day: <br/>';
+   echo '0th: ' . $row['0_spells'] . '&nbsp;&nbsp;&nbsp;';
+   echo '1st: ' . $row['1_spells'] . '&nbsp;&nbsp;&nbsp;';
+   echo '2nd: ' . $row['2_spells'] . '&nbsp;&nbsp;&nbsp;';
+   echo '3rd: ' . $row['3_spells'] . '&nbsp;&nbsp;&nbsp;';
+   echo '4th: ' . $row['4_spells'] . '&nbsp;&nbsp;&nbsp;';
+   echo '5th: ' . $row['5_spells'] . '&nbsp;&nbsp;&nbsp;';
+   echo '6th: ' . $row['6_spells'] . '&nbsp;&nbsp;&nbsp;';
+   echo '7th: ' . $row['7_spells'] . '&nbsp;&nbsp;&nbsp;';
+   echo '8th: ' . $row['8_spells'] . '&nbsp;&nbsp;&nbsp;';
+   echo '9th: ' . $row['9_spells'] . '&nbsp;&nbsp;&nbsp;';
+   echo '<br/> <br/> Spells Known: <br/>';
+  }
+  $query = "SELECT sp.name FROM spells sp JOIN character_spells cs ON cs.spell_id = sp.id WHERE cs.character_id = $char_id;";
+  foreach ($db->query($query) as $row)
+  {
+   echo $row['name'] . ' ';
+  }
+  echo '<br/> <br/> Feats: <br/> ';
+  $query = "SELECT f.name FROM feats f JOIN character_feats cf ON cf.feat_id = f.id WHERE cf.character_id = $char_id;";
+  foreach ($db->query($query) as $row)
+  {
+   echo $row['name'] . ' ';
+  }
+  echo '<br/> <br/> Equipment: <br/> <table>';
+  $query = "SELECT name, type, description, quantity FROM equipment_owned WHERE character_id = $char_id;";
+  foreach ($db->query($query) as $row)
+  {
+   echo '<tr><td>' . $row['name'] . '</td><td>' . $row['type'] . '</td><td>' . $row['quantity'] . '</td><td>' . $row['description'] . '</td></tr>';
+  }
+  echo '</table>';
  }
 } catch (PDOEXCEPTION $ex)
 {

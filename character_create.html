@@ -1,0 +1,141 @@
+<html>
+<head>
+    <title>Character Creation</title>
+    <style>
+    input[type="number"] {
+        width:50px;
+    }
+    </style>
+</head>
+<body>
+    <form action="create_character.php" method="post">
+        Name: <input type="text" name="charname" />
+        <br />
+        Ability Scores:
+        <br />
+        STR: <input type="number" name="strscore" size="4" />
+        DEX: <input type="number" name="dexscore" size="4" />
+        CON: <input type="number" name="conscore" size="4" />
+        INT: <input type="number" name="intscore" size="4" />
+        WIS: <input type="number" name="wisscore" size="4" />
+        CHA: <input type="number" name="chascore" size="4" />
+        <br />
+        Levels:
+        <br />
+        <select name="class1">
+            <option value="1">Barbarian</option>
+            <option value="2">Bard</option>
+            <option value="3>Cleric</option>
+            <option value="4">Druid</option>
+            <option value="5">Fighter</option>
+            <option value="6">Monk</option>
+            <option value="7">Paladin</option>
+            <option value="8">Ranger</option>
+            <option value="9">Rogue</option>
+            <option value="10">Sorcerer</option>
+            <option value="11">Wizard</option>
+        </select>
+        <input type="number" name="level1" size="2" value="0" />
+        <br />
+        <select name="class2">
+            <option value="1">Barbarian</option>
+            <option value="2">Bard</option>
+            <option value="3">Cleric</option>
+            <option value="4">Druid</option>
+            <option value="5">Fighter</option>
+            <option value="6">Monk</option>
+            <option value="7">Paladin</option>
+            <option value="8">Ranger</option>
+            <option value="9">Rogue</option>
+            <option value="10">Sorcerer</option>
+            <option value="11">Wizard</option>
+        </select>
+        <input type="number" name="level2" size="2" value="0" />
+        <br />
+        <select name="class3">
+            <option value="1">Barbarian</option>
+            <option value="2">Bard</option>
+            <option value="3">Cleric</option>
+            <option value="4">Druid</option>
+            <option value="5">Fighter</option>
+            <option value="6">Monk</option>
+            <option value="7">Paladin</option>
+            <option value="8">Ranger</option>
+            <option value="9">Rogue</option>
+            <option value="10">Sorcerer</option>
+            <option value="11">Wizard</option>
+        </select>
+        <input type="number" name="level3" size="2" value="0" />
+        <br />
+        <select name="class4">
+            <option value="1">Barbarian</option>
+            <option value="2">Bard</option>
+            <option value="3">Cleric</option>
+            <option value="4">Druid</option>
+            <option value="5">Fighter</option>
+            <option value="6">Monk</option>
+            <option value="7">Paladin</option>
+            <option value="8">Ranger</option>
+            <option value="9">Rogue</option>
+            <option value="10">Sorcerer</option>
+            <option value="11">Wizard</option>
+        </select>
+        <input type="number" name="level4" size="2" value="0" />
+        <br />
+        <select name="class5">
+            <option value="1">Barbarian</option>
+            <option value="2">Bard</option>
+            <option value="3">Cleric</option>
+            <option value="4">Druid</option>
+            <option value="5">Fighter</option>
+            <option value="6">Monk</option>
+            <option value="7">Paladin</option>
+            <option value="8">Ranger</option>
+            <option value="9">Rogue</option>
+            <option value="10">Sorcerer</option>
+            <option value="11">Wizard</option>
+        </select>
+        <input type="number" name="level5" size="2" value="0" />
+        <br />
+        Race:
+        <select name="race">
+            <option value="Human">Human</option>
+            <option value="Dwarf">Dwarf</option>
+            <option value="Elf">Elf</option>
+            <option value="Gnome">Gnome</option>
+            <option value="Halfling">Halfling</option>
+            <option value="Half-Elf">Half-Elf</option>
+            <option value="Half-Orc">Half-Orc</option>
+        </select>
+        <br />
+        Size: <input type="text" name="charsize" size="1"/> Speed: <input type="number" name="charspeed" width="30"/> <br />
+        BAB: <input type="number" name="charBAB" width="20"/> HP: <input type="number" name="charHP" width="40" /> 
+        <br />
+        AC: <input type="number" name="charAC" width="30" /> Touch: <input type="number" name="chartouch" width="30" /> Flat-footed: <input type="number" name="charFF" width="30" />
+        <br />
+        FORT: <input type="number" name="charfort" width="20" /> REFLEX: <input type="number" name="charref" width="20" /> WILL: <input type="number" name="charwill" width="20" />
+        <br />
+        Skill Ranks: <br />
+        <input type="text" name="charskills"> <br />
+        Qualities: <br />
+        <input type="text" name="charqualities" /> <br />
+        Spells Per Day: <br />
+        0th: <input type="number" name="0spellnum" value="0"/>
+        1st: <input type="number" name="1spellnum" value="0" />
+        2nd: <input type="number" name="2spellnum" value="0" />
+        3rd: <input type="number" name="3spellnum" value="0" />
+        4th: <input type="number" name="4spellnum" value="0" />
+        5th: <input type="number" name="5spellnum" value="0" />
+        6th: <input type="number" name="6spellnum" value="0" />
+        7th: <input type="number" name="7spellnum" value="0" />
+        8th: <input type="number" name="8spellnum" value="0" />
+        9th: <input type="number" name="9spellnum" value="0" />
+        Extra: <input type="number" name="Xspellnum" value="0" />
+        <br />
+        <br />
+        Enter a password for this character: <input type="text" name="charpass" /> <br /> <br />
+        To add special abilities, feats, spells, and/or equipment, access the character's page and click "Modify". <br />
+        <input type="submit" value="Create!"/>
+    </form>
+</body>
+</html>
