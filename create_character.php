@@ -170,7 +170,7 @@ try
   $stmt->execute();
  }
 
- echo '<a href="databaseaccess.php">All done, back to the start!</a>';
+ echo '<a href="dndcharactersearch.php">All done, back to the start!</a>';
 } catch (PDOEXCEPTION $ex)
 {
  echo "bad thing was " . $ex;

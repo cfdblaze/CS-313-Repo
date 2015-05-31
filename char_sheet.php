@@ -24,6 +24,7 @@ if ($dbHost === null || $dbHost == "") {
 }
 
 $char_id = $_POST["idsend"];
+$_SESSION['character_id'] = $char_id;
 $code_of_passing = $_POST["passcode"];
 try
 {
@@ -53,7 +54,7 @@ try
    echo '<td width="70"> Ability </td>';
    echo '<td width="70"> Scores </td></tr>';
 
-   echo '<tr><td width="200"> (Levels)</td><td></td>';
+   echo '<tr><td width="200"> <a href="char_details.php" target="_blank">(Character Details)</a></td><td><a href="char_update.php" target="_blank">Update Character</a></td>';
    echo '<td width="70"> STR: ' . $row['Strength'] . '</td>';
    echo '<td width="70"> INT: ' . $row['Intelligence'] . '</td></tr>';
 
