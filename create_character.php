@@ -79,8 +79,8 @@ try
  $db = new PDO("mysql:host=$dbHost;dbname=dnd_character_manager", $dbUser, $dbPassword);
  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
- $query = 'INSERT INTO characters (name, level, race, size, speed, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, HP, AC, touch_AC, flat_footed_AC, BAB, fort_save, reflex_save, will_save, skill_ranks, qualities, 0_spells, 1_spells, 2_spells, 3_spells, 4_spells, 5_spells, 6_spells, 7_spells, 8_spells, 9_spells, extra_spells, password)
- VALUES (:name, :level, :race, :size, :speed, :str, :dex, :con, :int, :wis, :cha, :hp, :ac, :touch, :flat, :bab, :fort, :ref, :will, :skills, :qualities, :0sp, :1sp, :2sp, :3sp, :4sp, :5sp, :6sp, :7sp, :8sp, :9sp, :xsp, :pass);';
+ $query = 'INSERT INTO characters (name, level, race, size, speed, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, HP, AC, touch_AC, flat_footed_AC, BAB, fort_save, reflex_save, will_save, skill_ranks, qualities, 0_spells, 1_spells, 2_spells, 3_spells, 4_spells, 5_spells, 6_spells, 7_spells, 8_spells, 9_spells, extra_spells, password, user_id)
+ VALUES (:name, :level, :race, :size, :speed, :str, :dex, :con, :int, :wis, :cha, :hp, :ac, :touch, :flat, :bab, :fort, :ref, :will, :skills, :qualities, :0sp, :1sp, :2sp, :3sp, :4sp, :5sp, :6sp, :7sp, :8sp, :9sp, :xsp, :pass, :user);';
  $stmt = $db->prepare($query);
  $stmt->bindValue(':name', $char_name, PDO::PARAM_STR);
  $stmt->bindValue(':level', $total_level, PDO::PARAM_INT);
@@ -115,6 +115,7 @@ try
  $stmt->bindValue(':9sp', $spell9, PDO::PARAM_INT);
  $stmt->bindValue(':xsp', $Xspell, PDO::PARAM_INT);
  $stmt->bindValue(':pass', $passcode, PDO::PARAM_STR);
+ $stmt->bindValue(':user', $_SESSION['user_id'], PDO::PARAM_INT);
  $stmt->execute();
 
  $new_id = 0;
@@ -170,7 +171,7 @@ try
   $stmt->execute();
  }
 
- echo '<a href="dndcharactersearch.php">All done, back to the start!</a>';
+ echo '<a href="charlist.php">All done, back to the start!</a>';
 } catch (PDOEXCEPTION $ex)
 {
  echo "bad thing was " . $ex;

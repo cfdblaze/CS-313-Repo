@@ -6,7 +6,7 @@ session_start();
 <head>
 <title> Character Sheet </title>
 </head>
-<body>
+<body background="http://img12.deviantart.net/6e6e/i/2006/235/e/0/parchment_by_empty_dreams.jpg">
 
 <?php
 
@@ -23,26 +23,47 @@ if ($dbHost === null || $dbHost == "") {
  $dbPassword = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
 }
 
-$char_id = $_POST["idsend"];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') 
+{
+ $char_id = $_POST["idsend"];
+ $code_of_passing = $_POST["passcode"];
+ $ispost = true;
+}
+else
+{
+ $char_id = $_GET["id"];
+ $code_of_passing = '';
+ $ispost = false;
+}
+
 $_SESSION['character_id'] = $char_id;
-$code_of_passing = $_POST["passcode"];
-try
+
+if ($ispost == true)
 {
- $db = new PDO("mysql:host=$dbHost;dbname=dnd_character_manager", $dbUser, $dbPassword);
- $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
- 
- $query = "SELECT password FROM characters WHERE id = '$char_id';";
- foreach ($db->query($query) as $row)
+ try
  {
-  $pw = $row['password'];
+  $db = new PDO("mysql:host=$dbHost;dbname=dnd_character_manager", $dbUser, $dbPassword);
+  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  
+  $query = "SELECT password FROM characters WHERE id = '$char_id';";
+  foreach ($db->query($query) as $row)
+  {
+   $pw = $row['password'];
+  }
+ } catch (PDOEXCEPTION $ex)
+ {
+  echo "bad thing was " . $ex;
  }
-} catch (PDOEXCEPTION $ex)
+}
+else
 {
- echo "bad thing was " . $ex;
+ $pw = '';
 }
 
 try
 {
+ $db = new PDO("mysql:host=$dbHost;dbname=dnd_character_manager", $dbUser, $dbPassword);
+ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  if ($pw != $code_of_passing) {
   echo 'Invalid Password!';
  } else {
@@ -107,6 +128,7 @@ try
    echo $row['name'] . ' ';
   }
   echo '<br/> <br/> Equipment: <br/> <table>';
+  echo '<tr><td>Name:</td><td>Type:</td><td>#:</td><td>Description:</td></tr>';
   $query = "SELECT name, type, description, quantity FROM equipment_owned WHERE character_id = $char_id;";
   foreach ($db->query($query) as $row)
   {

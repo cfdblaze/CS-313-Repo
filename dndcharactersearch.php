@@ -8,7 +8,7 @@ session_start();
 <title>PHP Database Access
 </title>
 </head>
-<body>
+<body background="http://pic1.duowan.com/ddo/0709/53780706098/53780757581.jpg">
 
 
 <?php

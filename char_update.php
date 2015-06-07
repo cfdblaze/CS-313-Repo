@@ -12,7 +12,7 @@ session_start();
 </style>
 
 </head>
-<body>
+<body background="http://img12.deviantart.net/6e6e/i/2006/235/e/0/parchment_by_empty_dreams.jpg">
 
 <?php
 
