@@ -58,7 +58,7 @@ try
  
  if (password_verify($pw, $userpw))
  {
-  $query = "SELECT id, name, level, race FROM characters WHERE user_id = $userid";
+  $query = "SELECT id, name, level, race FROM characters WHERE user_id = '$userid';";
   foreach ($db->query($query)as $row)
   {
    echo '<a href="char_sheet.php?id=' . $row['id'] . '">' . $row['name'] . ': Level ' . $row['level'] . ', ' . $row['race'] . '</a><br/>'; 
