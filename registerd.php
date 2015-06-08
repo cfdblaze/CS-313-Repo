@@ -34,7 +34,7 @@ try
  $db = new PDO("mysql:host=$dbHost;dbname=dnd_character_manager", $dbUser, $dbPassword);
  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  
- $query = "INSERT INTO users (username, password) VALUES (:uname, :pword)";
+ $query = "INSERT INTO users (username, password) VALUES (:uname, :pword);";
  $stmt = $db->prepare($query);
  $stmt->bindValue(':uname', $uname, PDO::PARAM_STR);
  $stmt->bindValue(':pword', $passwordHash, PDO::PARAM_STR);
