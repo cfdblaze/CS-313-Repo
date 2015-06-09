@@ -52,6 +52,7 @@ try
   foreach ($db->query($query) as $row)
   {
    $userpw = $row['password'];
+   $pw = $userpw;
    $username = $row['username'];
   }
  }
