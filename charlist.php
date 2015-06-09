@@ -56,7 +56,7 @@ try
   }
  }
  
- if (password_verify($pw, $userpw))
+ if ($pw == $userpw)
  {
   $query = "SELECT id, name, level, race FROM characters WHERE user_id = '$userid';";
   foreach ($db->query($query)as $row)
