@@ -27,7 +27,6 @@ if ($dbHost === null || $dbHost == "") {
 
 $uname = $_POST["uname"];
 $pword = $_POST["pword1"];
-$passwordHash = password_hash($pword, PASSWORD_DEFAULT);
 try
 {
 
@@ -37,7 +36,7 @@ try
  $query = "INSERT INTO users (username, password) VALUES (:uname, :pword);";
  $stmt = $db->prepare($query);
  $stmt->bindValue(':uname', $uname, PDO::PARAM_STR);
- $stmt->bindValue(':pword', $passwordHash, PDO::PARAM_STR);
+ $stmt->bindValue(':pword', $pword, PDO::PARAM_STR);
  $stmt->execute();
 } catch (PDOEXCEPTION $ex)
 {
